@@ -1,0 +1,15 @@
+{
+  "name": "varjao_center_servidor",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "https://github.com/mateushvenancio/varjao_center_servidor.git",
+  "author": "Mateus <38964103+mateushvenancio@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
