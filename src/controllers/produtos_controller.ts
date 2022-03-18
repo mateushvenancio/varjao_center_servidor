@@ -24,8 +24,14 @@ class ProdutosController {
                 error: "ID do produto não enviado",
             });
         }
-        const produto = await this.repo.getProdutoById(id);
-        return response.status(200).json(produto);
+        try {
+            const produto = await this.repo.getProdutoById(id);
+            return response.status(200).json(produto);
+        } catch (error) {
+            return response.status(404).json({
+                message: error,
+            });
+        }
     }
 }
 
