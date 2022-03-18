@@ -11,7 +11,7 @@ const controller: ProdutosController = new ProdutosController(repository);
 router.get("/", async (req, res) => {
     return await controller.getAllProdutos(req, res);
 });
-router.get("/{id}", async (req, res) => {
+router.get("/:id", async (req, res) => {
     return await controller.getProdutoById(req, res);
 });
 
