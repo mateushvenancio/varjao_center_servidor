@@ -19,6 +19,11 @@ class ProdutosController {
         response: Response
     ): Promise<Response> {
         const id = request.params.id;
+        if (!id) {
+            return response.status(400).json({
+                error: "ID do produto não enviado",
+            });
+        }
         const produto = await this.repo.getProdutoById(id);
         return response.status(200).json(produto);
     }

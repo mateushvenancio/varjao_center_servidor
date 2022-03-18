@@ -1,4 +1,5 @@
 export default interface ProdutoEntity {
+    id: string;
     nome: string;
-    qtdd: number;
+    preco: number;
 }
