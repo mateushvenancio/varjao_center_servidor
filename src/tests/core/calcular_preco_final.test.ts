@@ -1,5 +1,5 @@
 import calcularPrecoFinalProduto from "../../core/calcular_preco_final";
-import ProdutoEntity from "../../entities/produto_entity";
+import ProdutoEntity from "../../domain/entities/produto_entity";
 
 describe("should calculate the correct price", () => {
     it("10% of 100 -> 90", () => {

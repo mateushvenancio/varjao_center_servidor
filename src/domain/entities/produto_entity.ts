@@ -1,4 +1,4 @@
-import generateUuid from "../core/id_generator";
+import generateUuid from "../../core/id_generator";
 
 export default class ProdutoEntity {
     readonly id: string;

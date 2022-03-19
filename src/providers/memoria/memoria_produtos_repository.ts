@@ -1,5 +1,5 @@
-import ProdutoEntity from "../../entities/produto_entity";
-import IProdutosRepository from "../../repositories/i_podutos_repository";
+import ProdutoEntity from "../../domain/entities/produto_entity";
+import IProdutosRepository from "../../domain/repositories/i_podutos_repository";
 
 class MemoriaProdutosRepository implements IProdutosRepository {
     private produtos: ProdutoEntity[] = [];

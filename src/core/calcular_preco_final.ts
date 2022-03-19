@@ -1,4 +1,4 @@
-import ProdutoEntity from "../entities/produto_entity";
+import ProdutoEntity from "../domain/entities/produto_entity";
 
 const calcularPrecoFinalProduto = (produto: ProdutoEntity) => {
     const preco = produto.preco;

@@ -30,6 +30,15 @@ class ProdutosController {
 
     async createProduto(req: Request, res: Response): Promise<Response> {
         try {
+            const { nome, preco, imagens, descricao } = req.body;
+
+            if (!nome || typeof nome != "string") {
+                throw new Error("Required parameter: nome");
+            }
+            if (!preco || typeof nome != "number") {
+                throw new Error("Required parameter: preco");
+            }
+
             const produto = await this.repo.createProduto(req.body);
             return res.status(201).json(produto);
         } catch (error) {
