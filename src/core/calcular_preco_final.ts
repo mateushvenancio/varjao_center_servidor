@@ -1,8 +1,8 @@
-import ProdutoEntity from "../domain/entities/produto_entity";
+import ProdutoEntity from "../entities/produto_entity";
 
 const calcularPrecoFinalProduto = (produto: ProdutoEntity) => {
     const preco = produto.preco;
-    const desc = produto.porcentagemDesconto;
+    const desc = produto.desconto;
 
     if (!desc) {
         return preco;
