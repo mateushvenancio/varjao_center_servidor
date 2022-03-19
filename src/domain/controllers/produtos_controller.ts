@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express";
+import validateSchema from "../../core/validate_schema";
 import ProdutoEntity from "../entities/produto_entity";
 
 import IProdutosRepository from "../repositories/i_podutos_repository";
@@ -30,19 +31,31 @@ class ProdutosController {
 
     async createProduto(req: Request, res: Response): Promise<Response> {
         try {
-            const { nome, preco, imagens, descricao } = req.body;
+            const schema = {
+                type: "object",
+                properties: {
+                    nome: { type: "string" },
+                    preco: { type: "number" },
+                    imagens: { type: "array" },
+                    descricao: { type: "string" },
+                    desconto: { type: "number" },
+                },
+                required: ["nome", "preco", "imagens", "descricao"],
+                additionalProperties: false,
+            };
 
-            if (!nome || typeof nome != "string") {
-                throw new Error("Required parameter: nome");
-            }
-            if (!preco || typeof nome != "number") {
-                throw new Error("Required parameter: preco");
+            const validate = validateSchema(schema, req.body);
+
+            if (!validate) {
+                throw new Error("Parametros incorretos.");
             }
 
             const produto = await this.repo.createProduto(req.body);
             return res.status(201).json(produto);
         } catch (error) {
-            return res.status(400).json({ error: "" + error });
+            return res.status(400).json({
+                error: "" + error,
+            });
         }
     }
 }
