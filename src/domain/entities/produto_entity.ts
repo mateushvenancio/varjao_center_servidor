@@ -5,6 +5,4 @@ export default interface ProdutoEntity {
     porcentagemDesconto?: number;
     imagens: string[];
     descricao: string;
-
-    precoFinal(): number;
 }

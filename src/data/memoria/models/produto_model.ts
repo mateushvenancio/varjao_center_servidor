@@ -23,12 +23,4 @@ export default class ProdutoModel implements ProdutoEntity {
         this.imagens = imagens;
         this.descricao = desc;
     }
-
-    precoFinal(): number {
-        if (!this.porcentagemDesconto) {
-            return this.preco;
-        }
-
-        return this.preco - (this.preco / 100) * this.porcentagemDesconto;
-    }
 }
