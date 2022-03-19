@@ -30,21 +30,7 @@ class ProdutosController {
 
     async createProduto(req: Request, res: Response): Promise<Response> {
         try {
-            const nome: string = req.body.nome;
-            const preco: number = req.body.preco;
-            const desconto: number = req.body.preco;
-            const imagens: string[] = req.body.nome;
-            const descricao: string = req.body.nome;
-
-            const props = {
-                nome,
-                preco,
-                desconto,
-                imagens,
-                descricao,
-            };
-
-            const produto = await this.repo.createProduto(props);
+            const produto = await this.repo.createProduto(req.body);
             return res.status(201).json(produto);
         } catch (error) {
             return res.status(400).json({ error: "" + error });

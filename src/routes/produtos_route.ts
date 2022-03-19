@@ -15,6 +15,7 @@ router.get("/:id", async (req, res) => {
     return await controller.getProdutoById(req, res);
 });
 router.post("/", async (req, res) => {
+    console.log("Body2: ", req.body);
     return await controller.createProduto(req, res);
 });
 
