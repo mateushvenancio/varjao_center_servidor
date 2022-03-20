@@ -1,6 +1,6 @@
 import { Router } from "express";
-import ProdutosController from "../controllers/produtos_controller";
-import MemoriaProdutosRepository from "../data/memoria/repositories/memoria_produtos_repository";
+import ProdutosController from "../domain/controllers/produtos_controller";
+import MemoriaProdutosRepository from "../providers/memoria/memoria_produtos_repository";
 import IProdutosRepository from "../domain/repositories/i_podutos_repository";
 
 const router = Router();
@@ -13,6 +13,9 @@ router.get("/", async (req, res) => {
 });
 router.get("/:id", async (req, res) => {
     return await controller.getProdutoById(req, res);
+});
+router.post("/", async (req, res) => {
+    return await controller.createProduto(req, res);
 });
 
 export default router;
