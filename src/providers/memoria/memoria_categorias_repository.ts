@@ -1,6 +1,5 @@
 import InvalidParameterException from "../../core/exceptions/invalid_parameter_exception";
 import CategoriaEntity from "../../domain/entities/categoria_entity";
-import categoria_entity from "../../domain/entities/categoria_entity";
 import ICategoriasRepository from "../../domain/repositories/i_categorias_repository";
 
 export default class MemoriaCategoriasRepository

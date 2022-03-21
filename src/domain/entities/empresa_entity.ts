@@ -1,4 +1,4 @@
 export default interface EmpresaEntity {
-    id: string | number;
+    id: string;
     nome: string;
 }
