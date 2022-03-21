@@ -7,9 +7,9 @@ export default class MemoriaCategoriasRepository
     implements ICategoriasRepository
 {
     private categorias: CategoriaEntity[] = [
-        new CategoriaEntity("Alimentação"),
-        new CategoriaEntity("Limpeza", "", false),
-        new CategoriaEntity("Geral", "", true),
+        new CategoriaEntity("Alimentação", "0"),
+        new CategoriaEntity("Limpeza", "1", false),
+        new CategoriaEntity("Geral", "2", true),
     ];
 
     async getAllCategorias(): Promise<CategoriaEntity[]> {
