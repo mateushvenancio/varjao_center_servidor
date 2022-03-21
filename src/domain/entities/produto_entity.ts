@@ -1,4 +1,5 @@
 import generateUuid from "../../core/id_generator";
+import CategoriaEntity from "./categoria_entity";
 
 export default class ProdutoEntity {
     readonly id: string;
@@ -7,12 +8,14 @@ export default class ProdutoEntity {
     desconto?: number; // porcentagem
     imagens: string[];
     descricao: string;
+    categorias: CategoriaEntity[];
 
     constructor(
         nome: string,
         preco: number,
         imagens: string[],
         desc: string,
+        categorias: CategoriaEntity[],
         desconto?: number,
         id?: string
     ) {
@@ -21,6 +24,7 @@ export default class ProdutoEntity {
         this.desconto = desconto;
         this.imagens = imagens;
         this.descricao = desc;
+        this.categorias = categorias;
 
         this.id = id || generateUuid();
     }

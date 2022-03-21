@@ -1,11 +1,15 @@
 import { Request, Response, Router } from "express";
 import validateSchema from "../../core/validate_schema";
 import ProdutoEntity from "../entities/produto_entity";
+import ICategoriasRepository from "../repositories/i_categorias_repository";
 
 import IProdutosRepository from "../repositories/i_podutos_repository";
 
 class ProdutosController {
-    constructor(private repo: IProdutosRepository) {}
+    constructor(
+        private repo: IProdutosRepository,
+        private categoriasRepository: ICategoriasRepository
+    ) {}
 
     async getAllProdutos(req: Request, res: Response): Promise<Response> {
         const produtos = await this.repo.getAllProdutos();
@@ -39,8 +43,15 @@ class ProdutosController {
                     imagens: { type: "array" },
                     descricao: { type: "string" },
                     desconto: { type: "number" },
+                    categorias: { type: "array" },
                 },
-                required: ["nome", "preco", "imagens", "descricao"],
+                required: [
+                    "nome",
+                    "preco",
+                    "imagens",
+                    "descricao",
+                    "categorias",
+                ],
                 additionalProperties: false,
             };
 
@@ -50,7 +61,16 @@ class ProdutosController {
                 throw new Error("Parametros incorretos.");
             }
 
-            const produto = await this.repo.createProduto(req.body);
+            const categorias =
+                await this.categoriasRepository.getCategoriasByMultipleIds(
+                    req.body.categorias
+                );
+
+            const produto = await this.repo.createProduto({
+                ...req.body,
+                categorias,
+            });
+
             return res.status(201).json(produto);
         } catch (error) {
             return res.status(400).json({

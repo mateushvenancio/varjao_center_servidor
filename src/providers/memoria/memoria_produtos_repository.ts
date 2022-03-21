@@ -22,12 +22,26 @@ class MemoriaProdutosRepository implements IProdutosRepository {
         const imagens = props.imagens;
         const desc = props.descricao;
         const desconto = props.desconto;
+        const categorias = props.categorias;
 
-        const produto = new ProdutoEntity(nome, preco, imagens, desc, desconto);
+        const produto = new ProdutoEntity(
+            nome,
+            preco,
+            imagens,
+            desc,
+            categorias,
+            desconto
+        );
 
         this.produtos.push(produto);
 
         return produto;
+    }
+
+    async getProdutosByCategoria(id: string): Promise<ProdutoEntity[]> {
+        return this.produtos.filter((el) => {
+            return el.categorias.map((e) => e.id).includes(id);
+        });
     }
 }
 
